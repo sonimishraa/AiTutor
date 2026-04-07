@@ -14,6 +14,7 @@ import kotlin.jvm.java
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -31,6 +32,7 @@ class AppModule {
     @Provides
     fun provideHttpClient(context:Context) =OkHttpClient.Builder()
         .addInterceptor(ChuckerInterceptor(context))
+        .connectTimeout(60, TimeUnit.SECONDS)
         .build()
 
     @Singleton

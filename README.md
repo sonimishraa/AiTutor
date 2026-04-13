@@ -1,175 +1,161 @@
-# AI Tutor Android App
+# AI Tutor Learning App 🚀
 
-An AI-powered **chat-based tutoring Android application** built using modern Android development tools and architecture.
 
-The app currently supports **common question-answer chat functionality**, and is designed to scale into a **subject-wise AI tutoring platform** with **PDF-based learning support** in future releases.
+![Android](https://img.shields.io/badge/Android-Jetpack%20Compose-brightgreen)
+![Backend](https://img.shields.io/badge/Backend-FastAPI-blue)
+![LLM](https://img.shields.io/badge/LLM-Ollama-orange)
+![Architecture](https://img.shields.io/badge/Architecture-MVVM%20%7C%20MCP-purple)
+![Python](https://img.shields.io/badge/Python-3.11-yellow)
+![Kotlin](https://img.shields.io/badge/Kotlin-2.0-purple)
 
----
+An intelligent **AI-powered learning application** built using **Android (Jetpack Compose)**, **FastAPI**, **MCP agent workflow**, and **Ollama local LLM server**.
 
-## Features
-
-- Chat-based AI question-answer system
-- Modern UI with Jetpack Compose
-- MVVM architecture
-- Dependency Injection using Hilt
-- Coroutines + Flow for async state handling
-- Retrofit for backend API communication
-- Clean modular package structure
-- Scalable for AI tutoring features
+This project is designed to help users learn **Artificial Intelligence topics step-by-step** through an interactive and guided learning journey.
 
 ---
 
-## Tech Stack
+## ✨ Current Features
 
-- **Kotlin**
-- **Jetpack Compose**
-- **Hilt**
-- **Coroutines**
-- **Flow / StateFlow**
-- **Retrofit**
-- **MVVM Architecture**
-- **REST API**
-- **FastAPI Backend Support**
+### 📚 AI Topic Selection
 
----
+Users can select from multiple AI learning topics such as:
 
-## Project Structure
+* Machine Learning
+* Deep Learning
+* NLP
+* Computer Vision
+* Reinforcement Learning
+* LLM Systems
+
+### 🧠 Topic Detail Learning Screen
+
+On selecting a topic, the app navigates to a detailed learning screen.
+The topic explanation is fetched dynamically from the backend using:
 
 ```text
-com.sonimishra.aitutor
+Android App
+   ↓
+Client Server (FastAPI)
+   ↓
+Agent Layer
+   ↓
+MCP Server
+   ↓
+Ollama / Qdrant
+```
+
+The response is shown in structured learning sections:
+
+* Concept Explanation
+* Formula / Theory
+* Important Concepts
+* Key Learning Points
+
+### 🔄 Next Topic Learning Flow
+
+After completing one topic, the application recommends the **next topic** for guided learning.
+
+### 🚧 Upcoming Features
+
+* Dynamic quiz module
+* Short-answer conceptual questions
+* Adaptive learning path
+* Progress tracking
+
+---
+
+## 🏗️ Multi-Server Architecture
+
+### 📱 Android App
+
+Handles:
+
+* topic selection
+* detail screen
+* next topic navigation
+* future quiz UI
+
+### 🌐 Client Server
+
+Responsible for:
+
+* API handling
+* prompt generation
+* agent orchestration
+* response formatting
+
+### ⚙️ MCP Server
+
+Responsible for:
+
+* tool execution
+* RAG workflow
+* vector retrieval
+* Qdrant integration
+* knowledge augmentation
+
+---
+
+## 📂 Project Structure
+
+```text
+AI_TUTOR_PROJECT/
 │
-├── api/                # Retrofit API services and network layer
-├── chat/               # Chat UI screen, message models, components
-├── data/               # Repository and data handling
-├── di/                 # Hilt dependency injection modules
-├── navigation/         # Navigation routes and NavHost
-├── ui.theme/           # Compose theme, typography, colors
-├── utils/              # Utility classes and helpers
+├── AI_TUTOR_ANDROID_APP/
+│   ├── ui/
+│   ├── screens/
+│   ├── navigation/
+│   ├── viewmodel/
+│   ├── repository/
+│   └── network/
 │
-├── AppApplication.kt   # Application class for Hilt setup
-└── MainActivity.kt     # App entry point
+├── AI_TUTOR_CLIENT_SERVER/
+│   ├── .venv/
+│   ├── __pycache__/
+│   ├── agent.py
+│   ├── llm_ollama.py
+│   ├── main.py
+│   ├── master_prompt.txt
+│   ├── mcp_client.py
+│   ├── prompt.py
+│   ├── tutor_model.py
+│   ├── requirement.txt
+│   └── README.md
+├── AI_TUTOR_MCP_SERVER/
+│   ├── main.py
+│   ├── tool_handler.py
+│   └── requirement.txt
 ```
 
 ---
 
-## Architecture
+## 🛠️ Tech Stack
 
-```text
-Compose UI
-    │
-    ▼
-ViewModel
-    │
-    ▼
-Repository
-    │
-    ▼
-Retrofit API
-    │
-    ▼
-AI Tutor Backend Server
-```
+### Frontend
 
----
+* Kotlin
+* Jetpack Compose
+* Navigation Compose
+* Retrofit
+* MVVM Architecture
 
-## Current Functionality
+### Backend
 
-The app currently supports:
+* FastAPI
+* Python
+* Prompt Engine
+* Agent Workflow
 
-- user question input
-- chat UI conversation
-- API-based answer retrieval
-- loading state handling
-- error state handling
+### AI / LLM
 
-Example use case:
-
-```text
-User → "What is Newton's second law?"
-AI → "Force = mass × acceleration"
-```
+* Ollama
+* Local LLM Models
+* MCP Integration
+* Qdrant
 
 ---
 
-## Future Roadmap
-
-### Subject-Wise Tutor Support
-
-Planned learning modules:
-
-- Mathematics
-- English
-- Science
-- Geography
-- History
-
-Example:
-
-```text
-Class 5 → Basic Math
-Class 8 → Algebra
-Class 10 → Physics
-```
-
----
-
-### PDF-Based Query Support
-
-Future implementation includes:
-
-- upload study notes / books
-- ask questions from PDF
-- chapter-wise learning
-- semantic search support
-
-Example:
-
-```text
-Upload PDF → Ask question → AI answers from document
-```
-
----
-
-### Personalized Learning
-
-Planned features:
-
-- class-wise tutoring
-- difficulty levels
-- student learning progress
-- previous question history
-- quiz generation
-
----
-
-## Why This Project
-
-This app is built as a scalable **AI tutoring platform**, combining modern Android development with future AI-powered education features.
-
----
-
-## Installation
-
-```bash
-git clone https://github.com/yourusername/ai-tutor-app.git
-```
-
-Open in Android Studio and run.
-
----
-
-## Requirements
-
-- Android Studio
-- Kotlin 1.9+
-- Min SDK 24+
-- Internet Permission
-
----
-
-## Author
+## 👩‍💻 Author
 
 **Soni Mishra**
-
-Android Developer | AI/ML Learner | Backend + LLM Systems  
-Focused on scalable AI-powered educational applications.
+Android | AI/ML | LLM Systems | Research Learning App

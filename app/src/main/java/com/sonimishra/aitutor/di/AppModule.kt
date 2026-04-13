@@ -32,7 +32,9 @@ class AppModule {
     @Provides
     fun provideHttpClient(context:Context) =OkHttpClient.Builder()
         .addInterceptor(ChuckerInterceptor(context))
-        .connectTimeout(60, TimeUnit.SECONDS)
+        .connectTimeout(30, TimeUnit.SECONDS)
+        .readTimeout(60, TimeUnit.SECONDS)
+        .writeTimeout(60, TimeUnit.SECONDS)
         .build()
 
     @Singleton

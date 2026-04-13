@@ -1,4 +1,4 @@
-package com.sonimishra.aitutor.data
+package com.sonimishra.aitutor.model
 
 data class Message(
     val answer:String,

@@ -4,7 +4,9 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sonimishra.aitutor.data.ChatRepository
-import com.sonimishra.aitutor.data.Message
+import com.sonimishra.aitutor.model.Message
+import com.sonimishra.aitutor.model.QueryRequest
+import com.sonimishra.aitutor.model.QueryResponse
 import com.sonimishra.aitutor.utils.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -18,10 +20,10 @@ import javax.inject.Inject
 @HiltViewModel
 class ChatScreenViewModel @Inject constructor(val repository: ChatRepository): ViewModel() {
 
-    private val _chatMessage = MutableStateFlow<UIState<Message>>(UIState.Loading)
-    val chatMessage:MutableStateFlow<UIState<Message>> = _chatMessage
+    private val _chatMessage = MutableStateFlow<UIState<QueryResponse>>(UIState.Loading)
+    val chatMessage:MutableStateFlow<UIState<QueryResponse>> = _chatMessage
 
-    fun sendMessageQuery(query: String) {
+    fun sendMessageQuery(query: QueryRequest) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.chatMessage(query)
                 .catch { e ->

@@ -75,16 +75,16 @@ Handles:
 * next topic navigation
 * future quiz UI
 
-### 🌐 Client Server
+### 🌐 [Client Server](https://github.com/sonimishraa/AI_Tutor_Client_Server)
 
-Responsible for:
+Responsible for: 
 
 * API handling
 * prompt generation
 * agent orchestration
 * response formatting
 
-### ⚙️ MCP Server
+### ⚙️ [MCP Server architecture](https://github.com/sonimishraa/AI_Tutor_MCP_server)
 
 Responsible for:
 
